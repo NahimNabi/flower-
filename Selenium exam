@@ -1,0 +1,29 @@
+import unittest
+from selenium import webdriver
+
+class MacyWebsiteTest(unittest.TestCase):
+    def setUp(self):
+        # Set up the WebDriver (assuming Chrome in this example)
+        self.driver = webdriver.Chrome()
+        self.driver.get("https://www.macys.com/")  # Replace with Macy's website URL
+
+    def test_main_menu_navigation(self):
+        # Replace 'main-menu-item' with the actual identifier for the main menu item
+        main_menu_category = 'main-menu-item'
+
+        # Click on the main menu category
+        self.driver.find_element_by_id(main_menu_category).click()
+
+        # Assuming there is a unique identifier on the page for the selected category
+        # Replace 'page-identifier' with the actual identifier on the new page
+        page_identifier = 'page-identifier'
+
+        # Validate that you are on the right page using the unique identifier
+        self.assertTrue(self.driver.find_element_by_id(page_identifier).is_displayed())
+
+    def tearDown(self):
+        # Close the browser window
+        self.driver.quit()
+
+if __name__ == "__main__":
+    unittest.main()
